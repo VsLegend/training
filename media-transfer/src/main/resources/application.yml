@@ -1,0 +1,22 @@
+
+server:
+  port: 7010
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      # \u5355\u4E2A\u6587\u4EF6\u4E0A\u4F20\u7684\u6700\u5927\u503C -1\u65E0\u9650
+      max-file-size: 10MB
+      # \u4E0A\u4F20\u6587\u4EF6\u603B\u7684\u6700\u5927\u503C
+      max-request-size: 10MB
+
+
+# \u5728feign\u91CC\u542F\u52A8hystrix\uFF08\u7194\u65AD\u5668\uFF09 Feign\u5C06\u4F7F\u7528\u65AD\u8DEF\u5668\u5305\u88C5\u6240\u6709\u65B9\u6CD5
+feign:
+  hystrix:
+    enabled: true
+
+
+mediatransfer:
+  api:
+    url: /data/storage
