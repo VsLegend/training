@@ -12,6 +12,6 @@ opencv：超强跨平台的音视频处理工具包，音视频转码、视频�
 
 redis-mongodb：非结构化存储对比。redis-mongodb的基本运用
 
-remote-api：提供远程接口调用。提供有参无参 GET POST DELETE等接口
+remote-api：提供远程接口调用。提供有参无参 GET POST等接口
 
 remote-feign：open-feign远程接口调用功能，动态设置接口调用的url
