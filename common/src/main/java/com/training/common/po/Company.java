@@ -1,4 +1,4 @@
-package com.training.remoteapi.domain;
+package com.training.common.po;
 
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
@@ -18,9 +18,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Company implements Serializable {
 
-  private String index;
+  private String name;
 
-  private String remain;
+  private String marketValue;
 
   private Integer people;
 

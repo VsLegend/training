@@ -15,7 +15,6 @@ import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.cloud.openfeign.support.SpringDecoder;
 import org.springframework.cloud.openfeign.support.SpringEncoder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * @author Wangjunwei
@@ -29,7 +28,7 @@ import org.springframework.context.annotation.Configuration;
  * 1. 加上@Configuration成为配置类，即可为所有@FeignClient所修饰的类加上配置。即全局配置。
  */
 
-@Configuration
+//@Configuration
 public class FeignConfig implements RequestInterceptor {
 
   @Autowired

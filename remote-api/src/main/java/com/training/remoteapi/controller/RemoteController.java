@@ -3,7 +3,7 @@ package com.training.remoteapi.controller;
 import com.training.common.common.AppException;
 import com.training.common.common.Result;
 import com.training.common.enums.ErrorCode;
-import com.training.remoteapi.domain.Company;
+import com.training.common.po.Company;
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -38,28 +38,28 @@ public class RemoteController {
 
 
   @GetMapping("/getJobListAuth")
-  public Result getJobListAuth(HttpServletRequest request) {
+  public Object getJobListAuth(HttpServletRequest request) {
     // 请求头
     String authorization = request.getHeader("Authorization");
     if (StringUtils.isEmpty(authorization)) {
       throw new AppException(ErrorCode.ACCESS_DENIED);
     }
-    return Result.success(companyList);
+    return companyList;
   }
 
   @GetMapping("/getJobList")
-  public Result getJobList() {
-    return Result.success(companyList);
+  public Object getJobList() {
+    return companyList;
   }
 
   @GetMapping("/getJob/{name}")
-  public Result getJob(@PathVariable("name") String name) {
-    return Result.success(companyList.get(name));
+  public Object getJob(@PathVariable("name") String name) {
+    return companyList.get(name);
   }
 
   @GetMapping("/getJob")
-  public Result getJobParam(@RequestParam("remain") String name) {
-    return Result.success(companyList.get(name));
+  public Object getJobParam(@RequestParam("name") String name) {
+    return companyList.get(name);
   }
 
 
@@ -76,25 +76,21 @@ public class RemoteController {
 
   @PostMapping("/getRemainBean")
   public Result getRemain(@RequestBody Company company) {
+    System.out.println(company.toString());
     // 请求参数为对象
-    return Result
-        .success(
-            companyList.get(company.getIndex()).contains(company.getPeople().toString())
-                ? companyList
-                .get(company.getIndex()) : "公司已满员。");
+    return Result.success();
   }
 
   @GetMapping("/returnMap")
-  public Result returnMap() {
+  public Map<String, String> returnMap() {
     // 返回参数为map
-    return Result.success(companyList);
+    return companyList;
   }
 
 
   @GetMapping("/returnBean")
-  public Result returnBean() {
+  public Company returnBean() {
     // 返回参数为对象
-    return Result.success(
-        Company.builder().index("Googl全球垄断公司").remain(companyList.get("Googl全球垄断公司")).build());
+    return Company.builder().name("BBLA996福报公司").marketValue("100, 000, 000, 000, 000$").people(120000).build();
   }
 }

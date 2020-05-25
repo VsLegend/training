@@ -1,2 +1,10 @@
 server:
   port: 7070
+
+feign:
+  httpclient:
+    enabled: true
+
+logging:
+  level:
+    com.remoteConn.feign.feign.ApiService: debug
