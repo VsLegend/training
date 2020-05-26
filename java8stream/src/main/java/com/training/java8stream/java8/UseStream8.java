@@ -24,7 +24,8 @@ public class UseStream8 {
         , new Student("天天", "17", "20")
     ).collect(Collectors.toList());
 
-    // filter过滤数据 sorted排序 map映射内容 collect映射成集合 distinct去重
+    // filter(Predicate<? super T>) 过滤数据 sorted(Comparator<? super T>) 排序
+    // map(Function<? super T, ? extends R>) 映射内容 collect(Collector<? super T, A, R>)映射成集合 distinct去重
     List<String> studentName = students.stream()
         .filter(student -> Integer.parseInt(student.getLength()) > 15)
         .sorted(Comparator.comparing(Student::getLength).reversed()

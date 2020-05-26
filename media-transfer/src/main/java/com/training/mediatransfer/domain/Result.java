@@ -1,6 +1,5 @@
 package com.training.mediatransfer.domain;
 
-import com.alibaba.ans.shaded.com.alibaba.fastjson.JSONPObject;
 import java.util.List;
 import java.util.Map;
 import lombok.Data;
