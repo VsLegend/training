@@ -1,10 +1,10 @@
-package com.training.java8stream.service;
+package com.training.java8stream.java8;
 
 import com.training.java8stream.domain.Student;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Wangjunwei
@@ -14,34 +14,37 @@ import java.util.stream.Collectors;
 public class UseStream8 {
 
   public static void main(String[] args) {
-    List<Student> students = new ArrayList<>();
-    students.add(new Student("阿三", "56", "18"));
-    students.add(new Student("巴西", "34", "7"));
-    students.add(new Student("霓虹", "23", "14"));
-    students.add(new Student("弯弯", "77", "12"));
-    students.add(new Student("老米", "14", "19"));
-    students.add(new Student("杂技", "16", "20"));
-    students.add(new Student("天天", "17", "20"));
+//    Arrays.asList(T... a)
+    List<Student> students = Stream.of(new Student("阿三", "56", "18")
+        , new Student("巴西", "34", "7")
+        , new Student("霓虹", "23", "14")
+        , new Student("弯弯", "77", "12")
+        , new Student("老米", "14", "19")
+        , new Student("杂技", "16", "20")
+        , new Student("天天", "17", "20")
+    ).collect(Collectors.toList());
+
+    // filter过滤数据 sorted排序 map映射内容 collect映射成集合 distinct去重
     List<String> studentName = students.stream()
         .filter(student -> Integer.parseInt(student.getLength()) > 15)
         .sorted(Comparator.comparing(Student::getLength).reversed()
             .thenComparing(Comparator.comparing(Student::getAge).reversed()))
         .map(Student::getName)
+//        .distinct()
         .collect(Collectors.toList());
     List<Student> collect = students.stream()
         .filter(student -> Integer.parseInt(student.getLength()) > 15)
         .sorted(Comparator.comparing(Student::getLength).reversed()
             .thenComparing(Comparator.comparing(Student::getAge).reversed()))
         .collect(Collectors.toList());
-    for (String s : studentName) {
-      System.out.println("---" + s);
-    }
-    for (Student s : collect) {
-      System.out.print(s.getName() + "---");
-      System.out.print(s.getLength() + "---");
-      System.out.print(s.getAge() + "---");
-      System.out.println("");
-    }
+
+    studentName.forEach(s -> System.out.print(s + " "));
+    System.out.println("\n-----------------------------------");
+    collect.forEach(c -> {
+      System.out.print(c.getName() + " ");
+      System.out.print(c.getAge() + " ");
+      System.out.println(c.getLength());
+    });
   }
 
 }

@@ -1,6 +1,9 @@
 package com.training.java8stream.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Wangjunwei
@@ -9,6 +12,9 @@ import lombok.Data;
  */
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
 
   private String name;
@@ -16,11 +22,5 @@ public class Student {
   private String age;
 
   private String length;
-
-  public Student(String name, String age, String length) {
-    this.name = name;
-    this.age = age;
-    this.length = length;
-  }
 
 }
