@@ -3,6 +3,7 @@ package com.training.remotefeign.feign;
 import com.training.common.common.Result;
 import com.training.common.po.Company;
 import java.util.Map;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Wangjunwei
@@ -10,6 +11,8 @@ import java.util.Map;
  * @Description
  */
 
+// 开启降级处理时，需要添加注解
+@Component
 public class RemoteServiceHystrix implements RemoteService {
 
   @Override

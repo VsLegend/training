@@ -21,6 +21,12 @@ public enum ErrorCode {
    * 结果为空
    */
   RESULT_EMPTY(1003, "结果为空"),
+
+  /**
+   * 结果为空
+   */
+  SOCKET_HAVE_BEEN_CLOSED(2001, "Socket连接异常，客户端已关闭连接"),
+
   ;
 
 

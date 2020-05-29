@@ -10,6 +10,7 @@ public class AppException extends RuntimeException {
   private ErrorCode code;
 
   public AppException(ErrorCode code) {
+    super(code.getMsg());
     this.code = code;
   }
 

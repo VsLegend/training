@@ -4,6 +4,9 @@ server:
 feign:
   httpclient:
     enabled: true
+  hystrix:
+    enabled: true
+
 
 logging:
   level:
