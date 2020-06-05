@@ -1,0 +1,13 @@
+server:
+  port: 7080
+
+# Thymeleaf \u914D\u7F6E
+spring:
+  thymeleaf:
+    enabled: true
+    prefix: classpath:/templates/
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    mode: HTML5
+    suffix: .html
