@@ -142,6 +142,37 @@
       <optional>true</optional>
     </dependency>
 
+    <!--    easypoi模板-->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>3.17</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>3.17</version>
+    </dependency>
+
+    <!--    pdf 转图片-->
+    <dependency>
+      <groupId>org.icepdf.os</groupId>
+      <artifactId>icepdf-core</artifactId>
+      <version>6.1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>pdf-image</groupId>
+      <artifactId>spire-pdf</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.9</version>
+    </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
