@@ -12,7 +12,10 @@ import java.util.Base64;
  */
 public class FileUtils {
 
-  public static void toFile(String text, String targetPath) throws IOException {
+  /**
+   * 文本保存为文件
+   */
+  public static void saveAsFile(String text, String targetPath) throws IOException {
     byte[] buffer = text.getBytes();
     FileOutputStream out = new FileOutputStream(targetPath);
     out.write(buffer);
@@ -43,6 +46,17 @@ public class FileUtils {
     out.close();
   }
 
+  /**
+   * 获取文件或地址后缀
+   */
+  public static String getFileSuffix(String path) {
+    return path.substring(path.lastIndexOf(".") + 1).toLowerCase();
+  }
+
+  public static String getFileSuffix(File file) {
+    String path = file.getAbsolutePath();
+    return path.substring(path.lastIndexOf(".") + 1).toLowerCase();
+  }
 
   /**
    * 文件目录不存在时，自动创建

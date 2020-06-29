@@ -24,16 +24,16 @@ import java.util.List;
 public class PDFUtils {
 
 
-  public static List<File> pdf2Jpg(String source, String target) throws IOException {
+  public static List<File> pdf2Jpg(String source) throws IOException {
     return null;
   }
 
   /**
    * pdf转jpg
    */
-  public static List<File> pdf2Jpg(String path) throws IOException {
+  public static List<File> pdf2Jpg(String path, String target) throws IOException {
     log.info("");
-    File pdf = new File(path);
+    File pdf = FileUtils.createFileNotExists(path);
     String pdfName = FilenameUtils.getBaseName(pdf.getName());
     File destDir = pdf.getParentFile().getAbsoluteFile();
     Document document = new Document();
