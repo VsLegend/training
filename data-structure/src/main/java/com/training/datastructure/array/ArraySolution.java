@@ -11,8 +11,28 @@ public class ArraySolution {
 
 
   public static void main(String[] args) {
-    int n = 1804289383;
+    int n = 2147483647;
+    int i = arrangeCoins(n);
+    System.out.println(i);
   }
+
+
+  public static int arrangeCoins(int n) {
+    if (n == 1)
+      return n;
+    int l = 1;
+    int h = n;
+    while (l < h) {
+      long mid = (long) h + (long) l >> 1;
+      long e = (long) (1 + mid) * mid / 2;
+      System.out.println("中界： " + mid + "中值： " + e);
+      if (n < e) h = (int) mid;
+      else l = (int) mid + 1;
+      System.out.println("上界：" + h + "下界：" + l);
+    }
+    return --l;
+  }
+
 
   /**
    * 二分查找 Binary search
@@ -48,6 +68,17 @@ public class ArraySolution {
 //    }
     System.out.println("未找到：前一个元素为：" + v[--l]);
     return l;
+  }
+
+  // 改进二分查找 时间复杂度更为稳定 最坏为 O(logn)
+  public static int improveBinSearch(int[] m, int l, int h, int t) {
+    while (l < h) {
+      int mid = (l + h) >> 1;
+      if (t < m[mid]) h = mid;
+      else l = mid + 1;
+      System.out.println("mid: " + mid + " l: " + l + " h: " + h);
+    }
+    return --l;
   }
 
 
