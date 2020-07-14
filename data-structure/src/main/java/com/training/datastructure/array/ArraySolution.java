@@ -1,6 +1,6 @@
 package com.training.datastructure.array;
 
-import org.bouncycastle.util.Arrays;
+import java.util.Arrays;
 
 /**
  * @author Wangjunwei
