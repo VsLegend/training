@@ -1,6 +1,7 @@
 package com.training.datastructure.array;
 
 import java.util.Arrays;
+import java.util.Vector;
 
 /**
  * @author Wangjunwei
@@ -14,6 +15,10 @@ public class ArraySolution {
     int n = 2147483647;
     int i = arrangeCoins(n);
     System.out.println(i);
+    Vector vector = new Vector();
+    vector.add(12);
+    vector.indexOf(12);
+    vector.remove(12);
   }
 
 

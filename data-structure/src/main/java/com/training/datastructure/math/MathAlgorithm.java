@@ -1,5 +1,7 @@
 package com.training.datastructure.math;
 
+import java.util.Stack;
+
 /**
  * @User: wong
  * @Date: 2020/6/29
@@ -8,10 +10,30 @@ package com.training.datastructure.math;
 public class MathAlgorithm {
 
   public static void main(String[] args) {
+    System.out.println(convert(88, 2));
     System.out.println("1-100:" + as(1, 1, 100));
     System.out.println("1-100:" + gauss(1, 100, 100));
   }
 
+
+  /**
+   * 进制转换
+   * @param old 需转换的数
+   * @param base 转换为的进制
+   */
+  public static String convert(int old, int base) {
+    char[] digit = {'1','2','3','4','5','6','7','8','9','A', 'B', 'C','D','E','F'};
+    Stack<Character> stack = new Stack<>();
+    while (old > 0) {
+      stack.push(digit[old % base]);
+      old /= base;
+    }
+    StringBuffer sb = new StringBuffer();
+    while (!stack.isEmpty()) {
+      sb.append(stack.pop());
+    }
+    return sb.toString();
+  }
 
   // 求和
 
