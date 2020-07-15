@@ -16,7 +16,7 @@ public class Sort {
    * 归并排序 将数组化为递归基，合并递归基同事排序
    */
   public static boolean mergeSort(int[] v) {
-    mergeRec(v, 0, v.length - 1);
+    mergeRec(v, 0, v.length);
     return true;
   }
 
@@ -31,19 +31,25 @@ public class Sort {
 
   // 合并两个序列
   public static void merge(int[] v, int l, int mid, int h) {
-    int[] rA = Arrays.copyOfRange(v, l, mid);
-    int[] rB = Arrays.copyOfRange(v, mid, h);
+    System.out.println("低位：" + l + "中位：" + mid + " 高位：" + h);
+    int[] r = Arrays.copyOfRange(v, l, h); // [l, h)
+    int[] rA = Arrays.copyOfRange(v, l, mid); // [l, mid)
     int a = mid - l;
-    int b = h - mid;
-    for (int i = 0, m = 0, n = 0; (m < a) || (n < b); ) {
-      if (m < a && (b <= n || rA[m] <= rB[n]))
-        v[i++] = rA[m++];
-      if (n < b && (a <= m || rB[n] < rA[m]))
-        v[i++] = rB[n++];
+    int b = h - l;
+    for (int i = 0, m = 0, n = mid - l; m < a; ) {
+      // 高位取r中mid之后的值，低位取mid之前的值 当高位取完，低位还有值时，将低位剩余的所有值替换至r中；反之低位取完时，高位剩下的值是不变的，即刻退出循环
+      if (n < b && r[n] < rA[m])
+        r[i++] = r[n++];
+      if (n >= b || rA[m] <= r[n])
+        r[i++] = rA[m++];
     }
-    System.out.print("当前合并的数组：");
-    for (int i = l; i < h; i++)
-      System.out.print(v[i] + " ");
+    for (int i = 0; i < h - l; i++) {
+      v[i + l] = r[i];
+    }
+    System.out.print("当前归并列表：");
+    for (int i : v) {
+      System.out.print(i + " ");
+    }
     System.out.println();
   }
 
