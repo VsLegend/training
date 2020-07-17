@@ -1,7 +1,6 @@
 package com.training.datastructure.array;
 
 import java.util.Arrays;
-import java.util.Vector;
 
 /**
  * @author Wangjunwei
@@ -12,13 +11,9 @@ public class ArraySolution {
 
 
   public static void main(String[] args) {
-    int n = 2147483647;
-    int i = arrangeCoins(n);
+    int[] s = {1, 3, 5, 6};
+    int i = improveBinSearch(s, 0, s.length, 2);
     System.out.println(i);
-    Vector vector = new Vector();
-    vector.add(12);
-    vector.indexOf(12);
-    vector.remove(12);
   }
 
 

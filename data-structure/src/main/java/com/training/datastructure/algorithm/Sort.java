@@ -1,16 +1,23 @@
 package com.training.datastructure.algorithm;
 
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Stack;
 
 public class Sort {
 
   public static void main(String[] args) {
     int[] v = {7, 98, 45, 1, 3, 6, 77, 99, 2};
-    selectionSort(v);
-    for (int i : v) {
-      System.out.print(i + " ");
+    Node node = new Node(7);
+    node.succ = new Node(98);
+    node.succ = new Node(45);
+    node.succ = new Node(1);
+    node.succ = new Node(3);
+    node.succ = new Node(6);
+    node.succ = new Node(77);
+    node.succ = new Node(99);
+    node.succ = new Node(2);
+    Node sort = insertionSort(node);
+    for (Node n = sort; n != null; n = n.succ) {
+      System.out.print(n.value + " ");
     }
   }
 
@@ -20,27 +27,12 @@ public class Sort {
    * 在列表中由于插入只需要O(1)的时间，而数组平均需要O(n),因此在最好情况下，列表的时间复杂度为O(n)，数组为O(n^2)
    */
   public static Node insertionSort(Node node) {
-    Node first = node;
-    Node last = node;
-    for (Node s = node.succ; s != null; s = s.succ) {
-      insert(last, s);
+    Node first = null;
+    Node last = null;
+    for (Node next = node; next != null; next = next.succ) {
+
     }
     return first;
-  }
-
-  public static void insert(Node last, Node insert) {
-    for (Node x = last; x != null; x = x.prev) {
-      if (x.value < insert.value) {
-        insert.succ = x.succ;
-        insert.prev = x;
-        x.succ = insert;
-        return;
-      }
-      if (x.prev == null) {
-        x.prev = insert;
-        return;
-      }
-    }
   }
 
 
@@ -51,15 +43,16 @@ public class Sort {
    */
   public static void selectionSort(int[] v) {
     for (int i = 0; i < v.length; i++) {
-      int index = i;
-      int n = v.length - i;
-      for (int j = 0; j < n; j++) {
-        if (v[j] >= v[i])
+      int index = 0;
+      int n = v.length - i - 1;
+      for (int j = 0; j <= n; j++) {
+        if (v[j] >= v[index])
           index = j;
       }
-      int x = v[index];
-      v[index] = v[n];
-      v[n] = x;
+      System.out.println("当前最大值下标:" + index + "最大值：" + v[index]);
+      int x = v[n];
+      v[n] = v[index];
+      v[index] = x;
     }
   }
 
@@ -70,6 +63,7 @@ public class Sort {
   public static void mergeSort(int[] v) {
     mergeRec(v, 0, v.length);
   }
+
   // 遍历递归基
   public static void mergeRec(int[] v, int l, int h) {
     if (h - l < 2) return;
@@ -78,6 +72,7 @@ public class Sort {
     mergeRec(v, mid, h);
     merge(v, l, mid, h);
   }
+
   // 合并两个序列
   public static void merge(int[] v, int l, int mid, int h) {
     System.out.println("低位：" + l + "中位：" + mid + " 高位：" + h);
@@ -142,7 +137,7 @@ public class Sort {
         }
       }
       if (flag)
-        return ;
+        return;
     }
   }
 
