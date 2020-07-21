@@ -11,12 +11,27 @@ public class ArraySolution {
 
 
   public static void main(String[] args) {
-    int[] s = {1, 3, 5, 6};
-    int i = improveBinSearch(s, 0, s.length, 2);
-    System.out.println(i);
+    int[] s = {0, 1, 3, 4, 5};
+    System.out.println(missingNumber(s));
   }
 
 
+  // 剑指offer
+  public static int missingNumber(int[] nums) {
+    int l = 0;
+    int h = nums.length;
+    while (l < h) {
+      int i = (l + h) >> 1;
+      if (i == nums[i]) {
+        l = i + 1;
+      } else {
+        h = i;
+      }
+    }
+    return (l == nums.length - 1) && l == nums[l] ? l + 1 : l;
+  }
+
+  // 441 硬币
   public static int arrangeCoins(int n) {
     if (n == 1)
       return n;
