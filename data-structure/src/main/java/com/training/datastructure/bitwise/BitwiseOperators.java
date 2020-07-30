@@ -37,6 +37,10 @@ public class BitwiseOperators {
     absolute();
     System.out.println("----------------------------高低位交换");
     exchange();
+    System.out.println(Integer.toBinaryString(0b01010011 >>> 4));
+    System.out.println(Integer.toBinaryString(0b01010011 ^ 0b00000101));
+    System.out.println(Integer.MAX_VALUE);
+    System.out.println(0x7FFFFFFF);
   }
 
 
