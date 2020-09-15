@@ -21,6 +21,7 @@ public class VolatileThread extends Thread {
   }
 
   public static void main(String[] args) throws Exception {
+
     VolatileThread thread = new VolatileThread();
     thread.start();
     Thread.sleep(2000);

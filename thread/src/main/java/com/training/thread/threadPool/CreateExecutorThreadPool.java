@@ -2,6 +2,7 @@ package com.training.thread.threadPool;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 /**
  * @User: wong
@@ -23,6 +24,9 @@ public class CreateExecutorThreadPool {
     Thread.sleep(2000);
     System.out.println("强制结束线程池中的线程+++++++++++++++++++++++++++++++++++++++");
     executor.shutdownNow();
+
+    // 并行的定时线程池
+    ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
   }
 
 }

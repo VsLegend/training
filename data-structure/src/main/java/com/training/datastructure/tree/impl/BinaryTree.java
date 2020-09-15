@@ -109,11 +109,10 @@ public class BinaryTree {
   }
 
 
-  protected Tree exchange(Tree t, Tree s) {
+  protected void exchange(Tree t, Tree s) {
     Integer v = s.value;
     s.value = t.value;
     t.value = v;
-    return s;
   }
 
   /**

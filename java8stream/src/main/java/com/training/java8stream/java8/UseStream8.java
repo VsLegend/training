@@ -23,7 +23,6 @@ public class UseStream8 {
         , new Student("杂技", "16", "20")
         , new Student("天天", "17", "20")
     ).collect(Collectors.toList());
-
     // filter(Predicate<? super T>) 过滤数据 sorted(Comparator<? super T>) 排序
     // map(Function<? super T, ? extends R>) 映射内容 collect(Collector<? super T, A, R>)映射成集合 distinct去重
     List<String> studentName = students.stream()

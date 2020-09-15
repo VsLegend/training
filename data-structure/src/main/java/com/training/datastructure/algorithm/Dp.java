@@ -9,6 +9,20 @@ public class Dp {
 
 
   public static void main(String[] args) {
+    int[][] dp =  new int[5][4];
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 4; j++) {
+        dp[i][j] = 1;
+      }
+    }
+    for (int i = 0; i < 5; i++) {
+      for (int j = 0; j < 4; j++) {
+        System.out.print(dp[i][j] + " ");
+      }
+      System.out.println();
+    }
+    System.out.println(dp.length);
+    System.out.println(dp[0].length);
   }
 
   /**

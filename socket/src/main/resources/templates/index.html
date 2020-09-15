@@ -24,7 +24,7 @@ Welcome<br/>
     name = document.getElementById('name').value;
     if (null !== name && '' !== name) {
       if ('WebSocket' in window) {
-        var url = "ws://localhost:7080/chat/" + name;
+        var url = "ws:172.30.251.55:8092/evidencereview/v1/message/checkFlaw/" + name;
         websocket = new WebSocket(url);
       }
       else {

@@ -56,6 +56,13 @@ public class CreateSingleThread {
       System.out.println("线程C结束----------------------");
     });
     threadC.start();
+    Thread threadD = new Thread(new Runnable() {
+      @Override
+      public void run() {
+        System.out.println("线程D运行中----------------------");
+      }
+    });
+    threadD.start();
     try {
       // 等待线程A结束后继续往后走，也可以指定等待的时间，时间到了不管有没有执行完毕都往后走
       threadA.join(1000);

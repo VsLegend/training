@@ -30,6 +30,10 @@ public class MyHashMap<K, V> implements Serializable {
 
   int cap;
 
+  public static void main(String[] args) {
+  }
+
+
   public MyHashMap(int cap) {
     if (cap <= 0) {
       this.cap = 8;
@@ -37,26 +41,6 @@ public class MyHashMap<K, V> implements Serializable {
       this.cap = cap;
     }
     this.size = 0;
-  }
-
-  static class Node<K, V> {
-
-    final int hash;
-    final K key;
-    private V value;
-    private Node<K, V> next;
-
-    Node(int hash, K key, V value, Node<K, V> next) {
-      this.hash = hash;
-      this.key = key;
-      this.value = value;
-      this.next = next;
-    }
-
-    void setNext(Node<K, V> next) {
-      this.next = next;
-    }
-
   }
 
   public <K, V> V put(K key, V value) {
@@ -88,4 +72,24 @@ public class MyHashMap<K, V> implements Serializable {
     return hash & (cap - 1);
   }
 
+
+  static class Node<K, V> {
+
+    final int hash;
+    final K key;
+    private V value;
+    private Node<K, V> next;
+
+    Node(int hash, K key, V value, Node<K, V> next) {
+      this.hash = hash;
+      this.key = key;
+      this.value = value;
+      this.next = next;
+    }
+
+    void setNext(Node<K, V> next) {
+      this.next = next;
+    }
+
+  }
 }
