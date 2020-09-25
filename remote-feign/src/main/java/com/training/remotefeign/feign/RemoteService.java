@@ -6,9 +6,10 @@ import com.training.remotefeign.config.FeignConfig;
 import feign.HeaderMap;
 import feign.Param;
 import feign.RequestLine;
-import java.util.Map;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.Map;
 
 /**
  * @author Wangjunwei
@@ -29,16 +30,12 @@ public interface RemoteService {
   @RequestLine("GET /getJob/{name}")
   String getJob(@Param("name") String name);
 
-  @RequestLine("GET /getJob?name={name}")
-  String getJobParam(@Param("name") String name);
+  @RequestLine("POST /getJobByMap")
+  Result getJobByMap(@RequestBody Map<String, ?> map);
 
 
-  @RequestLine("POST /getRemainMap")
-  Result getRemainMap(@RequestBody Map<String, ?> map);
-
-
-  @RequestLine("POST /getRemainBean")
-  String getRemain(@RequestBody Company company);
+  @RequestLine("POST /getJobByBean")
+  String getJobByBean(@RequestBody Company company);
 
   @RequestLine("GET /returnMap")
   Map returnMap();

@@ -10,4 +10,4 @@ feign:
 
 logging:
   level:
-    com.remoteConn.feign.feign.ApiService: debug
+    com.training.remotefeign.feign.RemoteService: debug

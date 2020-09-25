@@ -2,8 +2,9 @@ package com.training.remotefeign.feign;
 
 import com.training.common.common.Result;
 import com.training.common.po.Company;
-import java.util.Map;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 /**
  * @author Wangjunwei
@@ -31,17 +32,12 @@ public class RemoteServiceHystrix implements RemoteService {
   }
 
   @Override
-  public String getJobParam(String name) {
+  public Result getJobByMap(Map<String, ?> map) {
     return null;
   }
 
   @Override
-  public Result getRemainMap(Map<String, ?> map) {
-    return null;
-  }
-
-  @Override
-  public String getRemain(Company company) {
+  public String getJobByBean(Company company) {
     return null;
   }
 

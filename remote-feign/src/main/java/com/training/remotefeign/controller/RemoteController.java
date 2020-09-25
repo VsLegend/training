@@ -4,15 +4,12 @@ import com.training.common.common.Result;
 import com.training.common.po.Company;
 import com.training.remotefeign.feign.RemoteService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Resource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author Wangjunwei
@@ -29,44 +26,45 @@ public class RemoteController {
   private RemoteService remoteService;
 
   @GetMapping("/getJobListAuth")
+  @ApiOperation(value = "设置header请求头参数")
   public Result getJobListAuth() {
     Map<String, Object> header = new HashMap<>();
+    // 假设这里是传递token
+    header.put("Authorization", "user_access");
     return Result.success(remoteService.getJobListAuth(header));
   }
 
   @GetMapping("/getJobList")
+  @ApiOperation(value = "GET请求")
   public Result getJobList() {
     return Result.success(remoteService.getJobList());
   }
 
   @GetMapping("/getJob/{name}")
+  @ApiOperation(value = "/getJob/{name} 链接参数请求")
   public Result getJob(@PathVariable("name") String name) {
     return Result.success(remoteService.getJob(name));
   }
 
-  @GetMapping("/getJob/{remain}")
-  public Result getJobParam(@PathVariable("remain") String name) {
-    return Result.success(remoteService.getJobParam(name));
-  }
 
-
-  @PostMapping("/getRemainMap")
-  public Result getRemainMap() {
-    // 请求参数为map
+  @PostMapping("/getJobByMap")
+  @ApiOperation(value = "请求参数为map")
+  public Result getJobByMap() {
     Map<String, Object> map = new HashMap<>();
-    return Result.success(remoteService.getRemainMap(map));
+    return Result.success(remoteService.getJobByMap(map));
   }
 
 
-  @PostMapping("/getRemainBean")
-  public Result getRemain(@RequestBody Company company) {
-    // 请求参数为对象
-    return Result.success(company);
+  @PostMapping("/getJobByBean")
+  @ApiOperation(value = "请求参数为对象")
+  public Result getJobByBean(@RequestBody Company company) {
+    // 需保证请求方与接收方对象的字段以及字段属性相同
+    return Result.success(remoteService.getJobByBean(company));
   }
 
   @GetMapping("/returnMap")
+  @ApiOperation(value = "返回参数为map")
   public Result returnMap() {
-    // 返回参数为map
     Map map = remoteService.returnMap();
     map.entrySet().forEach(m -> {
       System.out.println(map.get(m));
@@ -76,8 +74,8 @@ public class RemoteController {
 
 
   @GetMapping("/returnBean")
+  @ApiOperation(value = "返回参数为对象")
   public Result returnBean() {
-    // 返回参数为对象
     Company company = remoteService.returnBean();
     System.out.println(company);
     return Result.success(company);
