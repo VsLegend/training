@@ -129,6 +129,7 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-redis</artifactId>
     </dependency>
+
     <!--spring boot 整合mongdb包-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -139,7 +140,7 @@
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <optional>true</optional>
+      <version>1.18.12</version>
     </dependency>
 
     <!--    easypoi模板-->
@@ -171,6 +172,13 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>3.9</version>
+    </dependency>
+
+    <!--  slf4j日志  -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.25</version>
     </dependency>
 
     <dependency>
