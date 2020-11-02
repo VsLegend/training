@@ -1,10 +1,12 @@
 package com.training.common.po;
 
-import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * @author Wangjunwei
@@ -23,5 +25,7 @@ public class Company implements Serializable {
   private String marketValue;
 
   private Integer people;
+
+  private LocalDateTime time;
 
 }

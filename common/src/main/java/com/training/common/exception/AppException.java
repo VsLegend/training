@@ -1,4 +1,4 @@
-package com.training.common.common;
+package com.training.common.exception;
 
 import com.training.common.enums.ErrorCode;
 import org.springframework.util.StringUtils;
