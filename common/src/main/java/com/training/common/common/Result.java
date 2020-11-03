@@ -2,10 +2,10 @@ package com.training.common.common;
 
 
 import com.training.common.enums.ErrorCode;
-import java.io.Serializable;
-
 import com.training.common.exception.AppException;
 import lombok.Data;
+
+import java.io.Serializable;
 
 @Data
 public class Result<T>  implements Serializable {

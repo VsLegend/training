@@ -1,0 +1,15 @@
+server:
+  port: 7100
+
+spring:
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 6000ms
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+
+test:
+  license: S129sj~s@d-sdnc+dms&sndk_sddsa281dsSO-2*snasdJSJ

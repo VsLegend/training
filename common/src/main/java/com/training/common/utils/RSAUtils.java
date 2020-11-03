@@ -1,10 +1,6 @@
 package com.training.common.utils;
 
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
-
 import javax.crypto.Cipher;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.security.spec.PKCS8EncodedKeySpec;
@@ -16,16 +12,16 @@ import java.security.spec.X509EncodedKeySpec;
  * @Description: RSA 公私钥加解密
  */
 
-public class RSAUtil {
+public class RSAUtils {
 
-  // 生产环境秘钥对
+  // 公钥
   private static final String PUBLICKEY = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiAm26eZIkk+k8FFpQiymQisx7dT//w7t\n"
           + "Rk9McY0hcDLxTuW4GmfF597sBHFg0WStsC1xfLls0k3EuPaaAfNydZgCmUo5tq4s1Af0j+tWKP4g\n"
           + "+/5eCUFp2nkmaIEUORVzwPoklrD5V+X1hvVvTOsSPiBDIPIrB3XK3NmHi7DeTep7Y0dWrm7RX48X\n"
           + "jSo93YFQ3lNnpukpt2s0SkJkb3hTEm4VLJdQlBuoPTuGMFEEXW8XkvmFAhIjoTykK5Pg2lEnmmc/\n"
           + "HrD+UYvXkFbixnZk/4g48J9FsHF+eJjbrwDLdz+9RPoICi1qTB4Ut8lNf7dXKYPkPR5S8fEGLY9I\n"
           + "X2JlZwIDAQAB";
-  // 生产环境秘钥对
+  // 私钥
   private static final String PRIVATEKEY = "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCICbbp5kiST6TwUWlCLKZCKzHt\n"
           + "1P//Du1GT0xxjSFwMvFO5bgaZ8Xn3uwEcWDRZK2wLXF8uWzSTcS49poB83J1mAKZSjm2rizUB/SP\n"
           + "61Yo/iD7/l4JQWnaeSZogRQ5FXPA+iSWsPlX5fWG9W9M6xI+IEMg8isHdcrc2YeLsN5N6ntjR1au\n"
@@ -61,19 +57,19 @@ public class RSAUtil {
   public static String getPublicKey(KeyPair keyPair) {
     PublicKey publicKey = keyPair.getPublic();
     byte[] bytes = publicKey.getEncoded();
-    return byte2Base64(bytes);
+    return Base64Utils.byte2Base64(bytes);
   }
 
   // 获取私钥(Base64编码)
   public static String getPrivateKey(KeyPair keyPair) {
     PrivateKey privateKey = keyPair.getPrivate();
     byte[] bytes = privateKey.getEncoded();
-    return byte2Base64(bytes);
+    return Base64Utils.byte2Base64(bytes);
   }
 
   // 将Base64编码后的公钥转换成PublicKey对象
   public static PublicKey string2PublicKey(String pubStr) throws Exception {
-    byte[] keyBytes = base642Byte(pubStr);
+    byte[] keyBytes = Base64Utils.base642Byte(pubStr);
     X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keyBytes);
     KeyFactory keyFactory = KeyFactory.getInstance("RSA");
     PublicKey publicKey = keyFactory.generatePublic(keySpec);
@@ -82,7 +78,7 @@ public class RSAUtil {
 
   // 将Base64编码后的私钥转换成PrivateKey对象
   public static PrivateKey string2PrivateKey(String priStr) throws Exception {
-    byte[] keyBytes = base642Byte(priStr);
+    byte[] keyBytes = Base64Utils.base642Byte(priStr);
     PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(keyBytes);
     KeyFactory keyFactory = KeyFactory.getInstance("RSA");
     PrivateKey privateKey = keyFactory.generatePrivate(keySpec);
@@ -98,12 +94,12 @@ public class RSAUtil {
    */
   public static String encrypt(String content) throws Exception {
     byte[] encrypt = encrypt(content.getBytes(StandardCharsets.UTF_8));
-    return byte2Base64(encrypt);
+    return Base64Utils.byte2Base64(encrypt);
   }
 
   // 公钥加密
   public static byte[] encrypt(byte[] content) throws Exception {
-    PublicKey publicKey = RSAUtil.string2PublicKey(PUBLICKEY);
+    PublicKey publicKey = RSAUtils.string2PublicKey(PUBLICKEY);
     return publicEncrypt(content, publicKey);
   }
 
@@ -123,13 +119,13 @@ public class RSAUtil {
    * @return 解密原文
    */
   public static String decrypt(String content) throws Exception {
-    byte[] decrypt = decrypt(base642Byte(content));
+    byte[] decrypt = decrypt(Base64Utils.base642Byte(content));
     return new String(decrypt, StandardCharsets.UTF_8);
   }
 
   // 私钥解密
   public static byte[] decrypt(byte[] content) throws Exception {
-    PrivateKey privateKey = RSAUtil.string2PrivateKey(PRIVATEKEY);
+    PrivateKey privateKey = RSAUtils.string2PrivateKey(PRIVATEKEY);
     return privateDecrypt(content, privateKey);
   }
 
@@ -141,37 +137,13 @@ public class RSAUtil {
     return bytes;
   }
 
-  // 字符串转Base64编码
-  public static String str2Base64(String str) {
-    return byte2Base64(str.getBytes());
-  }
-
-  // Base64编码转字符串
-  public static String base642Str(String base64Key) throws IOException {
-    byte[] bytes = base642Byte(base64Key);
-    return new String(bytes);
-  }
-
-
-  // 字节数组转Base64编码
-  public static String byte2Base64(byte[] bytes) {
-    BASE64Encoder encoder = new BASE64Encoder();
-    return encoder.encode(bytes);
-  }
-
-  // Base64编码转字节数组
-  public static byte[] base642Byte(String base64Key) throws IOException {
-    BASE64Decoder decoder = new BASE64Decoder();
-    return decoder.decodeBuffer(base64Key);
-  }
-
   public static void main(String[] args) throws Exception {
 //        // 生成密钥对
-    KeyPair keyPair = RSAUtil.getKeyPair();
+    KeyPair keyPair = RSAUtils.getKeyPair();
     System.out.println("-------------------公钥-------------------");
-    System.out.println(byte2Base64(keyPair.getPublic().getEncoded()));
+    System.out.println(Base64Utils.byte2Base64(keyPair.getPublic().getEncoded()));
     System.out.println("-------------------私钥-------------------");
-    System.out.println(byte2Base64(keyPair.getPrivate().getEncoded()));
+    System.out.println(Base64Utils.byte2Base64(keyPair.getPrivate().getEncoded()));
   }
 
 }

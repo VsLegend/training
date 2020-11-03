@@ -6,6 +6,11 @@ public enum ErrorCode {
   UNEXCEPTED(9999, "系统异常"),
 
   /**
+   * 系统内部错误
+   */
+  INTERNAL_ERROR(500, "系统内部错误"),
+
+  /**
    * 成功
    */
   SUCCESS(1000, "成功"),
@@ -23,7 +28,17 @@ public enum ErrorCode {
   RESULT_EMPTY(1003, "结果为空"),
 
   /**
-   * 结果为空
+   * 参数请求验证失败
+   */
+  PARAMETER_CHECK_FAILED(1004, "参数请求验证失败"),
+
+  /**
+   * 数据返回加密失败
+   */
+  DATA_ENCRYPT_FAILED(1005, "数据返回加密失败"),
+
+  /**
+   * socket连接关闭
    */
   SOCKET_HAVE_BEEN_CLOSED(2001, "Socket连接异常，客户端已关闭连接"),
 

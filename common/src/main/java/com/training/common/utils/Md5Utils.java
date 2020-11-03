@@ -7,9 +7,9 @@ import org.springframework.util.DigestUtils;
  * @Date: 2020/10/21
  * @Description: md5 加盐加密
  */
-public class Md5Util {
+public class Md5Utils {
 
-  private static final String SALT = "sacw921751234.s1twfgefhsjg.siytrgsw.25syehsdie.2346537123";
+  private static final String SALT = "MD5test1234.dsacnxjzks.921dksanca.dsnsjaKHKS012.219dJGJ-+2d";
 
   /**
    * md5 加密
