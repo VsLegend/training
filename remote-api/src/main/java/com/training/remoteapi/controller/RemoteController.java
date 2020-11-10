@@ -1,6 +1,6 @@
 package com.training.remoteapi.controller;
 
-import com.training.common.common.AppException;
+import com.training.common.exception.AppException;
 import com.training.common.common.Result;
 import com.training.common.enums.ErrorCode;
 import com.training.common.po.Company;
