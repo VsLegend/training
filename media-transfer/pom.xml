@@ -28,6 +28,14 @@
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
+    <!--ffmpeg视频转音频-->
+    <dependency>
+      <groupId>ws.schild</groupId>
+      <artifactId>jave-all-deps</artifactId>
+      <version>2.6.1</version>
+    </dependency>
+
+
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
