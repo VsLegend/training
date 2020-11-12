@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service(value = "dog")
 public class DogServiceImpl implements MatchService {
+
   @Override
   public String getName() {
     return "Dog";
