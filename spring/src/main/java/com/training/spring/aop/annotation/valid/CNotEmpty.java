@@ -14,7 +14,7 @@ import static java.lang.annotation.ElementType.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ FIELD, PARAMETER })
 @ValidMark
-public @interface FieldNotEmpty {
+public @interface CNotEmpty {
 
   /**
    * 报错消息

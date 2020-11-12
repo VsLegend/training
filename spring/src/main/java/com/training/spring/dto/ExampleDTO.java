@@ -1,6 +1,6 @@
 package com.training.spring.dto;
 
-import com.training.spring.aop.annotation.valid.FieldNotEmpty;
+import com.training.spring.aop.annotation.valid.CNotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +22,7 @@ import java.util.List;
 @Builder
 public class ExampleDTO implements Serializable {
 
-  @FieldNotEmpty(message = "姓名不能为空")
+  @CNotEmpty(message = "姓名不能为空")
   private String name;
 
   private Date birthday;

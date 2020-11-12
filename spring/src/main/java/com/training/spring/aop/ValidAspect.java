@@ -1,8 +1,8 @@
 package com.training.spring.aop;
 
-import com.training.spring.aop.annotation.valid.FieldNotEmpty;
+import com.training.spring.aop.annotation.valid.CNotEmpty;
 import com.training.spring.aop.annotation.valid.ValidMark;
-import com.training.spring.exception.FieldEmptyException;
+import com.training.spring.exception.CValidException;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -19,9 +19,9 @@ import java.util.Collection;
 
 @Aspect
 @Component
-public class FieldCheckAspect {
+public class ValidAspect {
 
-  @Pointcut("@annotation(com.training.spring.aop.annotation.valid.FieldValid)")
+  @Pointcut("@annotation(com.training.spring.aop.annotation.valid.CValid)")
   public void check() {
   }
 
@@ -48,7 +48,7 @@ public class FieldCheckAspect {
     }
   }
 
-  // 判断是否标记注解
+  // 判断是否是校验注解
   public Annotation checkAnnotationExist(Annotation[] annotations) {
     for (Annotation annotation : annotations) {
       if (annotation.annotationType().isAnnotationPresent(ValidMark.class))
@@ -60,9 +60,9 @@ public class FieldCheckAspect {
   // 校验对象
   public void validObject(Object object, Class<?> aClass, Annotation annotation) {
     // 校验是否为空
-    if (FieldNotEmpty.class == annotation.annotationType()) {
+    if (CNotEmpty.class == annotation.annotationType()) {
       if (this.checkNullOrBlank(object, aClass)) {
-        throw new FieldEmptyException(((FieldNotEmpty) annotation).message());
+        throw new CValidException(((CNotEmpty) annotation).message());
       }
     }
     // 校验其他…………
@@ -72,11 +72,11 @@ public class FieldCheckAspect {
   public void validField(Field field) {
     field.setAccessible(true);
     // 校验是否为空
-    if (field.isAnnotationPresent(FieldNotEmpty.class)) {
+    if (field.isAnnotationPresent(CNotEmpty.class)) {
       if (this.checkNullOrBlank(field, field.getClass())) {
-        FieldNotEmpty fieldNotEmpty = field.getAnnotation(FieldNotEmpty.class);
-        String message = fieldNotEmpty.message();
-        throw new FieldEmptyException(message);
+        CNotEmpty cNotEmpty = field.getAnnotation(CNotEmpty.class);
+        String message = cNotEmpty.message();
+        throw new CValidException(message);
       }
     }
     // 校验其他…………

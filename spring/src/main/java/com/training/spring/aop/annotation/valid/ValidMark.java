@@ -13,5 +13,6 @@ import static java.lang.annotation.ElementType.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({TYPE, ANNOTATION_TYPE})
+@Inherited
 public @interface ValidMark {
 }

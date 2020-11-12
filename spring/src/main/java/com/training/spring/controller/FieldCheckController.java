@@ -1,7 +1,7 @@
 package com.training.spring.controller;
 
-import com.training.spring.aop.annotation.valid.FieldNotEmpty;
-import com.training.spring.aop.annotation.valid.FieldValid;
+import com.training.spring.aop.annotation.valid.CNotEmpty;
+import com.training.spring.aop.annotation.valid.CValid;
 import com.training.spring.dto.ExampleDTO;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,16 +17,16 @@ import java.util.List;
 @RequestMapping("/check")
 public class FieldCheckController {
 
-  @FieldValid
+  @CValid
   @PostMapping("/object")
   public String  object(@RequestBody ExampleDTO exampleDTO) {
     System.out.println(exampleDTO.toString());
     return exampleDTO.getName();
   }
 
-  @FieldValid
+  @CValid
   @PostMapping("/field")
-  public String field(@RequestBody @FieldNotEmpty List<String> list) {
+  public String field(@RequestBody @CNotEmpty List<String> list) {
     System.out.println(list.toString());
     return null;
   }
