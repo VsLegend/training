@@ -1,7 +1,6 @@
 package com.training.spring.aop.annotation.valid;
 
 import java.lang.annotation.*;
-
 import static java.lang.annotation.ElementType.*;
 
 /**
