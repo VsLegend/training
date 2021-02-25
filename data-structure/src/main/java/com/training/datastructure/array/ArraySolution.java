@@ -1,6 +1,7 @@
 package com.training.datastructure.array;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 /**
  * @author Wangjunwei
@@ -11,8 +12,25 @@ public class ArraySolution {
 
 
   public static void main(String[] args) {
-    int[] s = {0, 1, 3, 4, 5};
-    System.out.println(missingNumber(s));
+    int[] nums = {0, 1, 3, 4, 5};
+    System.out.println(missingNumber(nums));
+  }
+
+
+  public int[] nextGreaterElements(int[] nums) {
+    int length = nums.length;
+    // 循环数组扩大两倍转普通数组
+    int[] arr = new int[2 * length];
+    for (int i = 0; i < arr.length; i++) {
+      arr[i] = i >= length ? nums[i - length] : nums[i];
+    }
+    // 单调递减，当删除某个元素时，即代表新插入的元素是最后一个出栈元素的右边第一个大于他的数
+    Stack<Integer> stack = new Stack<>();
+    int index = 0;
+    while (index < length) {
+
+    }
+    return arr;
   }
 
 

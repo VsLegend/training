@@ -1,5 +1,8 @@
 package com.training.datastructure.algorithm;
 
+import java.util.Collection;
+import java.util.LinkedHashMap;
+
 /**
  * @User: wong
  * @Date: 2020/7/7
@@ -8,7 +11,12 @@ package com.training.datastructure.algorithm;
 public class DepthFirstSearch {
 
   public static void main(String[] args) {
-    System.out.println();
+    LinkedHashMap<String, Object> linkedHashMap = new LinkedHashMap<>(8, 0.75f, true);
+    linkedHashMap.put("key", "new Key");
+    linkedHashMap.get("key");
+    Collection<Object> values = linkedHashMap.values();
+    System.out.println(values.toString());
+    linkedHashMap.clear();
   }
 
 

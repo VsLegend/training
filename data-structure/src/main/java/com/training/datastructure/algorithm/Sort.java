@@ -1,23 +1,33 @@
 package com.training.datastructure.algorithm;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Sort {
 
   public static void main(String[] args) {
+    Map<String, String> hashMap = new HashMap<>();
+    hashMap.put("S", "1");
+    hashMap.put("B", "2");
+    System.out.println(hashMap.toString());
     int[] v = {7, 98, 45, 1, 3, 6, 77, 99, 2};
-    Node node = new Node(7);
-    node.succ = new Node(98);
-    node.succ = new Node(45);
-    node.succ = new Node(1);
-    node.succ = new Node(3);
-    node.succ = new Node(6);
-    node.succ = new Node(77);
-    node.succ = new Node(99);
-    node.succ = new Node(2);
-    Node sort = insertionSort(node);
-    for (Node n = sort; n != null; n = n.succ) {
-      System.out.print(n.value + " ");
+//    Node node = new Node(7);
+//    node.succ = new Node(98);
+//    node.succ = new Node(45);
+//    node.succ = new Node(1);
+//    node.succ = new Node(3);
+//    node.succ = new Node(6);
+//    node.succ = new Node(77);
+//    node.succ = new Node(99);
+//    node.succ = new Node(2);
+//    Node sort = insertionSort(node);
+//    for (Node n = sort; n != null; n = n.succ) {
+//      System.out.print(n.value + " ");
+//    }
+    insertionSort(v);
+    for (int i : v) {
+      System.out.print(" " + i);
     }
   }
 
@@ -29,10 +39,27 @@ public class Sort {
   public static Node insertionSort(Node node) {
     Node first = null;
     Node last = null;
-    for (Node next = node; next != null; next = next.succ) {
+    Node next = null;
+    while ((next = node) != null) {
 
     }
     return first;
+  }
+
+  public static void insertionSort(int[] a) {
+    int len = a.length - 1;
+    int low = 0;
+    for (int i = low, j = i; i < len; j = ++i) {
+      // 逐一比较插入位置
+      int ai = a[i + 1];
+      while (ai < a[j]) {
+        a[j + 1] = a[j];
+        if (j-- == low) {
+          break;
+        }
+      }
+      a[j + 1] = ai;
+    }
   }
 
 
