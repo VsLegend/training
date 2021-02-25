@@ -23,4 +23,8 @@ public class Student {
 
   private String length;
 
+  public static String sumLength(String a, String b) {
+    return String.valueOf(Integer.parseInt(a) + Integer.parseInt(b));
+  }
+
 }

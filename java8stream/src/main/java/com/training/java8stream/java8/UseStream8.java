@@ -4,6 +4,7 @@ import com.training.java8stream.domain.Student;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -72,6 +73,10 @@ public class UseStream8 {
       System.out.print(c.getAge() + " ");
       System.out.println(c.getLength());
     });
+
+    // group by
+    Map<String, String> map = students.stream().collect(Collectors.groupingBy(Student::getName, Collectors.reducing("0", Student::getLength, Student::sumLength)));
+    map.forEach((key, value) -> System.out.println("=========" + key + ":" + value));
   }
 
 }
