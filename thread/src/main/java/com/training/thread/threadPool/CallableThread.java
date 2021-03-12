@@ -38,7 +38,7 @@ public class CallableThread implements Callable<String> {
     new Thread(() -> {
       int time = 0;
       while (!list.isEmpty()) {
-        System.out.println("查看第" + ++time + "次结果中++++++++++++++++++++");
+        System.out.println("第" + ++time + "次查看结果++++++++++++++++++++");
         for (int i = 0; i < list.size(); i++) {
           Future<String> future;
           if ((future = list.get(i)).isDone()) {
@@ -55,7 +55,8 @@ public class CallableThread implements Callable<String> {
       }
     }).start();
     System.out.println("主线程执行完毕，等待结果输出+++++++++++++++++");
-    threadPool.shutdown();
+//    threadPool.shutdownNow() // 立即关闭线程池
+    threadPool.shutdown(); // 等待线程全部执行完毕后，关闭线程池，此时线程池无法创建新任务
     System.out.println("等待线程池关闭+++++++++++++++++++++++++++++");
   }
 }

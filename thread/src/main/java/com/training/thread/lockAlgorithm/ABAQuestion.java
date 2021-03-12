@@ -1,11 +1,11 @@
-package com.training.thread.lock;
+package com.training.thread.lockAlgorithm;
 
 import java.util.Stack;
 
 /**
  * @User: wong
  * @Date: 2020/9/14
- * @Description:
+ * @Description: CAS的ABA问题
  */
 public class ABAQuestion {
 

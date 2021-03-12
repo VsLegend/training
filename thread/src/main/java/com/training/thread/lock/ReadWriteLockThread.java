@@ -1,4 +1,4 @@
-package com.training.thread.syncThread;
+package com.training.thread.lock;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -19,6 +19,10 @@ public class ReadWriteLockThread {
   // 写锁
   private final Lock wLock = rwLock.writeLock();
 
+  // 惰性生成
+  ReadWriteLockThread() {
+
+  }
 
   private int sum = 2020;
 

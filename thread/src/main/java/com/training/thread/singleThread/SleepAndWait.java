@@ -16,6 +16,7 @@ public class SleepAndWait {
     System.out.println("线程：" + num + " 已获得锁，当前线程暂停5秒。");
     // 此处sleep让当前占用该锁的线程睡眠，当前线程将会一直持有锁
     Thread.sleep(5000);
+    Thread.yield();
     System.out.println("线程：" + num + " 继续执行");
   }
 
@@ -84,6 +85,7 @@ public class SleepAndWait {
     });
     thread.setDaemon(true);
     thread.start();
+    String o = new String();
   }
 
 }

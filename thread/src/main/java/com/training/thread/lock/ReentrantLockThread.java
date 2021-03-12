@@ -1,4 +1,4 @@
-package com.training.thread.syncThread;
+package com.training.thread.lock;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
