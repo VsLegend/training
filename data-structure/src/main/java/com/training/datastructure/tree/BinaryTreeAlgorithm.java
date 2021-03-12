@@ -76,15 +76,22 @@ public class BinaryTreeAlgorithm {
   public static void main(String[] args) {
     BinaryTreeAlgorithm binaryTree = new BinaryTreeAlgorithm();
     TreeNode root = binaryTree.getTreeRoot();
-    Queue<Integer> queue = new LinkedList<>();
-    Stack<Integer> stack = new Stack<>();
-    TreeNode hot = root.left;
-    String s = "fsafsaaga";
-    char[] chars = s.toCharArray();
-    int i;
-    System.out.println(i = 2 >> 1);
-    System.out.println(i = 3 >> 1);
-    System.out.println(i = 4 >> 1);
+    preOrder(root);
+  }
+
+  public static void preOrder(TreeNode root) {
+    LinkedList<TreeNode> stack = new LinkedList<>();
+    TreeNode node = root;
+    while (null != node || stack.size() > 0) {
+      if (null != node) {
+        stack.push(node);
+        node = node.left;
+      } else {
+        TreeNode pop = stack.pop();
+        System.out.println(pop.val);
+        node = pop.right;
+      }
+    }
   }
 
   public int respace(String[] dictionary, String sentence) {

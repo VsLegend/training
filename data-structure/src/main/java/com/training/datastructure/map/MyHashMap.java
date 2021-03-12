@@ -1,6 +1,7 @@
 package com.training.datastructure.map;
 
 import java.io.Serializable;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Wangjunwei
@@ -35,6 +36,8 @@ public class MyHashMap<K, V> implements Serializable {
 
 
   public MyHashMap(int cap) {
+    ConcurrentHashMap<String, Object> concurrentHashMap = new ConcurrentHashMap<>();
+    concurrentHashMap.put("key", "112");
     if (cap <= 0) {
       this.cap = 8;
     } else {
