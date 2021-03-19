@@ -19,11 +19,6 @@ public class ReadWriteLockThread {
   // 写锁
   private final Lock wLock = rwLock.writeLock();
 
-  // 惰性生成
-  ReadWriteLockThread() {
-
-  }
-
   private int sum = 2020;
 
   public void add(int i) {
