@@ -24,6 +24,9 @@ public class AESUtils {
   // 默认的加密算法
   private static final String DEFAULT_CIPHER_ALGORITHM = "AES/ECB/PKCS5Padding";
 
+  // 默认种子
+  private static final String DEFAULT_SEED = "NSsu928&w012~3NSisd-csfps";
+
 
   /**
    * AES 加密操作
@@ -76,8 +79,7 @@ public class AESUtils {
       seed = System.getProperty("AES_SYS_KEY");
     }
     if (seed == null || seed.trim().length() == 0) {
-      // 默认密钥
-      seed = "NSsu928&w012~3NSisd-csfps";
+      seed = DEFAULT_SEED;
     }
     return getSecretKey(seed);
   }
@@ -90,7 +92,7 @@ public class AESUtils {
       SecureRandom random = SecureRandom.getInstance("SHA1PRNG");
       // 设置随机密码的种子值
       random.setSeed(seed.getBytes(StandardCharsets.UTF_8));
-      // AES 要求密钥长度为 128/192/256
+      // AES 要求密钥长度为 128/192/256 位
       kg.init(128, random);
       // 生成一个密钥
       SecretKey secretKey = kg.generateKey();
@@ -102,9 +104,6 @@ public class AESUtils {
   }
 
   public static void main(String[] args) throws Exception {
-    String seed = "129dhsiah82dksahkfa";
-    SecretKeySpec secretKey = getSecretKey(seed);
-
 
 //    String content  = "12749218312321321";
 //    String password = RSAUtil.encrypt("ODJjODUzY2Q0ODA3YjJlOTE1YTQ2NGFhOTY5YjNiMmE=");
