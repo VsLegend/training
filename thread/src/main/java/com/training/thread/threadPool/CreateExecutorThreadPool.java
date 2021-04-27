@@ -3,6 +3,7 @@ package com.training.thread.threadPool;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @User: wong
@@ -41,6 +42,7 @@ public class CreateExecutorThreadPool {
     Thread.sleep(2000);
     System.out.println("强制结束线程池中的线程+++++++++++++++++++++++++++++++++++++++");
     cachedThreadPool.shutdownNow();
+    cachedThreadPool.awaitTermination(1000, TimeUnit.SECONDS);
 
   }
 

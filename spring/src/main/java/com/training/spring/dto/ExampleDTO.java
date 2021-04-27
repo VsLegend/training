@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -20,6 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Component
 public class ExampleDTO implements Serializable {
 
   @CNotEmpty(message = "姓名不能为空")

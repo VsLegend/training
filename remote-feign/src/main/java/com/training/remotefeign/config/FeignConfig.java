@@ -66,26 +66,9 @@ public class FeignConfig implements RequestInterceptor {
     return new SpringDecoder(messageConverters);
   }
 
-  // feign调用拦截器 可以设置请求的所有参数
+  // feign调用拦截器
   @Override
   public void apply(RequestTemplate template) {
-//    ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder
-//            .getRequestAttributes();
-//    HttpServletRequest request = attributes.getRequest();
-//    if (request != null) {
-//      System.err.println("feign传递参数");
-////        只携带token
-////            String authorization = request.getHeader("Authorization");
-////            requestTemplate.header("Authorization", authorization);
-//      // 将请求feign接口的所有header信息一并传给携带，并传给feign调用的远程接口
-//      Enumeration<String> headerNames = request.getHeaderNames();
-//      if (headerNames != null) {
-//        while (headerNames.hasMoreElements()) {
-//          String name = headerNames.nextElement();
-//          String values = request.getHeader(name);
-////          template.header(name, values);
-//        }
-//      }
-//    }
   }
+
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    <bean id="dog" name="dog" class="com.training.spring.service.impl.DogServiceImpl"/>-->
+<!--    <bean id="cat" class="com.training.spring.service.impl.CatServiceImpl">-->
+<!--        <property name="dog" ref="dog" />-->
+<!--        <property name="names">-->
+<!--            <list>-->
+<!--                <value>cat 1</value>-->
+<!--                <value>cat 2</value>-->
+<!--                <value>cat 3</value>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+</beans>

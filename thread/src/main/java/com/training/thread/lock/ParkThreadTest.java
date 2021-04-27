@@ -21,9 +21,11 @@ public class ParkThreadTest {
           Thread thread = Thread.currentThread();
           String name = thread.getName();
           System.out.println(name + "开始执行");
-          LockSupport.park();
+          LockSupport.park(this);
+          Object blocker = LockSupport.getBlocker(Thread.currentThread());
+          System.out.println(blocker);
           boolean interrupted = Thread.interrupted();
-          System.out.println(interrupted);
+          System.out.println("被唤醒时线程的状态：" + interrupted);
           System.out.println(name + "被唤醒重新执行");
         }
       }
@@ -42,8 +44,10 @@ public class ParkThreadTest {
     }
     flag  = false;
     set.forEach(s -> {
-      System.out.println(s.isInterrupted());
+      System.out.println("调用唤醒方法的状态" + s.isInterrupted());
       LockSupport.unpark(s);
+      LockSupport.unpark(s);
+//      s.interrupt();
       try {
         Thread.sleep(100);
       } catch (InterruptedException e) {

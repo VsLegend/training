@@ -22,6 +22,7 @@ import java.util.Map;
 @RequestMapping("/offer")
 public class RemoteController {
 
+  // feign.codec.EncodeException: Content-Type cannot contain wildcard type '*'
   @Resource
   private RemoteService remoteService;
 
@@ -57,27 +58,27 @@ public class RemoteController {
 
   @PostMapping("/getJobByBean")
   @ApiOperation(value = "请求参数为对象")
-  public Result getJobByBean(@RequestBody Company company) {
+  public Result<String> getJobByBean(@RequestBody Company company) {
     // 需保证请求方与接收方对象的字段以及字段属性相同
+    company.setTime(null);
+    System.out.println(company.getTime());
     return Result.success(remoteService.getJobByBean(company));
   }
 
   @GetMapping("/returnMap")
   @ApiOperation(value = "返回参数为map")
-  public Result returnMap() {
+  public Result<Map> returnMap() {
     Map map = remoteService.returnMap();
-    map.entrySet().forEach(m -> {
-      System.out.println(map.get(m));
-    });
+    System.out.println("返回map： " + map);
     return Result.success(map);
   }
 
 
   @GetMapping("/returnBean")
   @ApiOperation(value = "返回参数为对象")
-  public Result returnBean() {
+  public Result<Company> returnBean() {
     Company company = remoteService.returnBean();
-    System.out.println(company);
+    System.out.println("返回对象： " + company);
     return Result.success(company);
   }
 }

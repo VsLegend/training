@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.3.RELEASE</version>
+        <version>2.3.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.training</groupId>
-    <artifactId>spring</artifactId>
+    <artifactId>swagger3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring</name>
+    <name>swagger3</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -19,17 +19,23 @@
     </properties>
 
     <dependencies>
-        <!--公用依赖-->
+        <!--swagger3.0-->
         <dependency>
-            <groupId>com.training</groupId>
-            <artifactId>common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springdoc</groupId>-->
+<!--            <artifactId>springdoc-openapi-ui</artifactId>-->
+<!--            <version>1.2.32</version>-->
+<!--        </dependency>-->
 
+
+        <!--web-->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.12</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
         <dependency>
@@ -37,21 +43,10 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <!--spring aop + aspectj-->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>5.0.8.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>1.8.9</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>1.8.9</version>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
         </dependency>
 
         <dependency>
@@ -65,12 +60,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>org.glassfish.hk2.external</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>2.3.0</version>
-        </dependency>
-
     </dependencies>
 
     <build>

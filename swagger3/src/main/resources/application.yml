@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: swagger3.0
+
+server:
+  port: 7090
+
+# swagger3.0 配置
+# 访问地址：http://localhost:7090/swagger-ui/index.html

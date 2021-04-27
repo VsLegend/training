@@ -14,6 +14,6 @@ public class CatServiceImpl implements MatchService {
 
   @Override
   public String getName() {
-    return "Cat";
+    return "This is a Cat";
   }
 }
