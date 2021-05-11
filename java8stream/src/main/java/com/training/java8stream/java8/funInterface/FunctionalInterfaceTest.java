@@ -1,7 +1,7 @@
 package com.training.java8stream.java8.funInterface;
 
 /**
- * @User: Administrator
+ * @User: wong
  * @Time: 2021/5/11
  * @Description: 描述
  *

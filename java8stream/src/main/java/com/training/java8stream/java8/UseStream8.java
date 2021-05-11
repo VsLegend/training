@@ -75,7 +75,9 @@ public class UseStream8 {
     });
 
     // group by
-    Map<String, String> map = students.stream().collect(Collectors.groupingBy(Student::getName, Collectors.reducing("0", Student::getLength, Student::sumLength)));
+    Map<String, String> map = students.stream().collect(
+            Collectors.groupingBy(Student::getName, Collectors.reducing("0", Student::getLength, Student::sumLength))
+    );
     map.forEach((key, value) -> System.out.println("=========" + key + ":" + value));
   }
 

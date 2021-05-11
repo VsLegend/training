@@ -1,7 +1,7 @@
 package com.training.java8stream.java8;
 
 /**
- * @User: Administrator
+ * @User: wong
  * @Time: 2021/5/11
  * @Description: lambda 表达式实例
  */
