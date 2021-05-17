@@ -14,7 +14,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 /**
  * @User: Administrator
  * @Time: 2021/5/17
- * @Description:
+ * @Description: swagger3 配置类
  */
 
 @Configuration
@@ -33,8 +33,8 @@ public class Swagger3JavaConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Swagger3接口文档")
-                .description("更多请咨询服务开发者Ray。")
-                .contact(new Contact("Ray。", "http://www.ruiyeclub.cn", "ruiyeclub@foxmail.com"))
+                .description("测试RESTful文档")
+                .contact(new Contact("联系人", "网址", "邮箱"))
                 .version("1.0.0")
                 .build();
     }
