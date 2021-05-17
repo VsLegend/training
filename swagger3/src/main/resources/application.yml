@@ -7,3 +7,8 @@ server:
 
 # swagger3.0 配置
 # 访问地址：http://localhost:7090/swagger-ui/index.html
+swagger:
+  enable: true
+  applicationName: swagger3.0测试
+  applicationVersion: 1.0.0
+  applicationDescription: 描述
