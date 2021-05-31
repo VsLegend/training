@@ -3,6 +3,7 @@ package com.training.datastructure.reflect;
 import lombok.Data;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 /**
  * @User: wong
@@ -41,8 +42,8 @@ public class FieldReflectDemo {
     } catch (NoSuchFieldException | IllegalAccessException e) {
       e.printStackTrace();
     }
-    System.out.println("constantStr实例对象值：" + fieldReflectDemo.getConstantStr());
-    System.out.println("newStr实例对象值：" + fieldReflectDemo.getNewStr());
+//    System.out.println("constantStr实例对象值：" + fieldReflectDemo.getConstantStr());
+//    System.out.println("newStr实例对象值：" + fieldReflectDemo.getNewStr());
   }
 
   /**

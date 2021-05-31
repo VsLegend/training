@@ -86,16 +86,16 @@
     </dependency>
 
     <!--    pdf 转图片-->
-    <dependency>
-      <groupId>org.icepdf.os</groupId>
-      <artifactId>icepdf-core</artifactId>
-      <version>6.1.2</version>
-    </dependency>
-    <dependency>
-      <groupId>pdf-image</groupId>
-      <artifactId>spire-pdf</artifactId>
-      <version>1.0.0</version>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.icepdf.os</groupId>-->
+<!--      <artifactId>icepdf-core</artifactId>-->
+<!--      <version>6.1.2</version>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>pdf-image</groupId>-->
+<!--      <artifactId>spire-pdf</artifactId>-->
+<!--      <version>1.0.0</version>-->
+<!--    </dependency>-->
 
     <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
     <dependency>

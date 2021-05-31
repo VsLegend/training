@@ -2,9 +2,7 @@ package com.training.datastructure.reflect;
 
 import org.springframework.util.StringUtils;
 
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.lang.reflect.Parameter;
+import java.lang.reflect.*;
 
 /**
  * @User: wong
@@ -41,7 +39,10 @@ public class MethodReflectDemo {
       // 异常
       Class<?>[] exceptionTypes = method.getExceptionTypes();
       System.out.println("");
-    } catch (NoSuchMethodException e) {
+      // 实例对象调用方法
+      Object invoke = method.invoke(methodReflectDemo, "名称");
+      System.out.println(invoke);
+    } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
       e.printStackTrace();
     }
   }

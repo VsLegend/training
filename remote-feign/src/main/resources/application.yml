@@ -7,7 +7,6 @@ feign:
   hystrix:
     enabled: true
 
-
 logging:
   level:
     com.training.remotefeign.feign.RemoteService: debug
