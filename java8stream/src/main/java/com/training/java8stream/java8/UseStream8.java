@@ -28,6 +28,12 @@ public class UseStream8 {
             , new Student("杂技", "16", "20")
             , new Student("天天", "17", "20")
     ).collect(Collectors.toList());
+    // 找到列表的第一个以及最后一个元素
+    String first = students.stream().map(Student::getName).findFirst().orElse(null);
+    String last = students.stream().map(Student::getName).skip(students.size() - 1).reduce((a, b) -> b).orElse(null);
+    System.out.println("First" + first);
+    System.out.println("Last" + last);
+
     // filter(Predicate<? super T>) 过滤数据
     // sorted(Comparator<? super T>) 排序
     // map(Function<? super T, ? extends R>) 映射内容
@@ -77,7 +83,9 @@ public class UseStream8 {
     });
 
     // group by
-    Map<String, String> map = students.stream().collect(Collectors.groupingBy(Student::getName, Collectors.reducing("0", Student::getLength, Student::sumLength)));
+    Map<String, String> map = students.stream().collect(
+            Collectors.groupingBy(Student::getName, Collectors.reducing("0", Student::getLength, Student::sumLength))
+    );
     map.forEach((key, value) -> System.out.println("=========" + key + ":" + value));
   }
 

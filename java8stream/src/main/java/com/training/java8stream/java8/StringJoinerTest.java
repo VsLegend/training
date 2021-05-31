@@ -15,7 +15,6 @@ public class StringJoinerTest {
     StringJoiner stringJoiner = new StringJoiner(",", "[", "]");
     stringJoiner.add("Jon").add("Kay").add("Moy");
     System.out.println(stringJoiner.toString());
-    DateFormat.getDateInstance()
   }
 
 }
