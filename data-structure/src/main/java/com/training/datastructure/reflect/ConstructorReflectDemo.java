@@ -36,7 +36,7 @@ public class ConstructorReflectDemo {
       // 异常
       Class<?>[] exceptionTypes = constructor.getExceptionTypes();
       System.out.println("");
-      // 构造方法无法被回调，只可以创建新实例
+      // 构造方法无法被调用，只可以创建新实例
       ConstructorReflectDemo constructorReflectDemo = constructor.newInstance();
     } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
       e.printStackTrace();
