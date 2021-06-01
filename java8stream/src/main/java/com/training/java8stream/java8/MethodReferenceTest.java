@@ -1,11 +1,7 @@
 package com.training.java8stream.java8;
 
-import com.sun.istack.internal.NotNull;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
