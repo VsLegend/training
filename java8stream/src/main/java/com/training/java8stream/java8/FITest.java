@@ -28,12 +28,11 @@ public class FITest<T, R> {
 
     // 判断正确时打印输出
     public R getIfTrue(T t, Function<T, R> function, Predicate<T> predicate) {
-        if (predicate.test(t)) {
-            return function.apply(t);
-        } else {
+        if (!predicate.test(t)) {
             System.err.println("密码错误！");
+            return null;
         }
-        return null;
+        return function.apply(t);
     }
 
 }
