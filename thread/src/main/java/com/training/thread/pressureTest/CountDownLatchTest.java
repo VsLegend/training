@@ -1,6 +1,7 @@
 package com.training.thread.pressureTest;
 
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @User: wong
@@ -36,6 +37,7 @@ public class CountDownLatchTest {
         try {
           System.out.println("当前线程等待其他其他线程执行完毕中...");
           // 等待计数器清零后，就会释放所有调用该方法的线程
+          boolean await = countDownLatch.await(2000, TimeUnit.SECONDS);
           countDownLatch.await();
         } catch (InterruptedException e) {
           e.printStackTrace();
