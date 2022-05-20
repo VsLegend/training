@@ -172,32 +172,29 @@ public class ExcelUtils {
         private Object[] headers;
 
         /**
-         * 识别的字段内容
-         */
-        private FiledContent filedContent;
-
-        /**
          * 创建或选择sheet
          *
          * @param sheetName
          */
         public void setSheetName(String sheetName) {
-            if (null != sheetCache.get(sheetName)) {
-                sheetContent = sheetCache.get(sheetName);
+            SheetContent cache = sheetCache.get(sheetName);
+            if (null != cache) {
+                this.sheetContent = cache;
                 return;
             }
+            this.sheetContent = new SheetContent();
             Sheet sheet = workbook.getSheet(sheetName);
             if (sheet == null) {
-                sheetContent.setCellIndex(0);
-                sheetContent.setSheet(workbook.createSheet(sheetName));
-                sheetContent.setHeaderInsert(false);
+                this.sheetContent.setCellIndex(0);
+                this.sheetContent.setSheet(workbook.createSheet(sheetName));
+                this.sheetContent.setHeaderInsert(false);
             } else {
                 int lastRowNum = sheet.getLastRowNum();
-                sheetContent.setCellIndex(lastRowNum);
-                sheetContent.setSheet(sheet);
-                sheetContent.setHeaderInsert(lastRowNum > 0);
+                this.sheetContent.setCellIndex(lastRowNum);
+                this.sheetContent.setSheet(sheet);
+                this.sheetContent.setHeaderInsert(lastRowNum > 0);
             }
-            sheetCache.put(sheetName, sheetContent);
+            sheetCache.put(sheetName, this.sheetContent);
         }
 
 
@@ -229,8 +226,7 @@ public class ExcelUtils {
         public void setHeader(Class<?> clazz) {
             checkSheet();
             FiledContent filedContent = ClassBuilderUtils.parseDeclaredFile(clazz);
-            this.filedContent = filedContent;
-            sheetContent.setHeaders(filedContent.getHeader());
+            this.sheetContent.setFiledContent(filedContent);
         }
 
         /**
@@ -274,6 +270,7 @@ public class ExcelUtils {
             }
             // 表头
             Class<?> aClass = data.get(0).getClass();
+            final FiledContent filedContent = sheetContent.getFiledContent();
             if (aClass != filedContent.getClazz()) {
                 throw new IllegalArgumentException("ExcelUtils write Class Exception：The parameter class-" +
                         aClass + " is different from the header class-" + filedContent.getClazz());
@@ -431,6 +428,10 @@ public class ExcelUtils {
         private CellStyle headerCellStyle;
         private int cellIndex;
         private Object[] headers;
+        /**
+         * 识别的字段内容
+         */
+        private FiledContent filedContent;
 
         public CellStyle getCellStyle(Workbook workbook) {
             return cellStyle == null ? getStyle(workbook) : cellStyle;
@@ -438,6 +439,13 @@ public class ExcelUtils {
 
         public CellStyle getHeaderCellStyle(Workbook workbook) {
             return headerCellStyle == null ? getHeaderStyle(workbook) : headerCellStyle;
+        }
+
+        public Object[] getHeaders() {
+            if (null != filedContent) {
+                return filedContent.getHeader();
+            }
+            return headers;
         }
 
     }
