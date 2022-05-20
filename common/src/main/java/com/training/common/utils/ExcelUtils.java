@@ -106,7 +106,7 @@ public class ExcelUtils {
             this.builder.setWorkbook(workbook);
             this.builder.setFile(file);
             this.builder.setSheetContent(new SheetContent());
-            this.builder.setSheetCache(new ConcurrentHashMap<>(16));
+            this.builder.setSheetCache(MapUtil.newConcurrentHashMap());
         }
 
         /**
@@ -124,11 +124,13 @@ public class ExcelUtils {
 
         public Excel headers(Object[] headers) {
             this.builder.setHeader(headers);
+            this.builder.writeHeader();
             return this;
         }
 
         public Excel headers(Class<?> headers) {
             this.builder.setHeader(headers);
+            this.builder.writeHeader();
             return this;
         }
 
@@ -141,16 +143,12 @@ public class ExcelUtils {
          * 使用
          */
         public Excel write(List<Object[]> data) {
-            if (!CollectionUtils.isEmpty(data)) {
-                this.builder.write(data);
-            }
+            this.builder.write(data);
             return this;
         }
 
         public Excel writeObject(List<?> data) {
-            if (!CollectionUtils.isEmpty(data)) {
-                this.builder.writeClassList(data);
-            }
+            this.builder.writeClassList(data);
             return this;
         }
 
@@ -236,6 +234,17 @@ public class ExcelUtils {
         }
 
         /**
+         * 输出表头到表格
+         */
+        public void writeHeader() {
+            if (!sheetContent.isHeaderInsert()) {
+                writeRow(Collections.singletonList(sheetContent.getHeaders()), sheetContent.getHeaderCellStyle(workbook));
+                sheetContent.setHeaderInsert(true);
+                autoSizeColumn(sheetContent.getHeaders().length);
+            }
+        }
+
+        /**
          * 输出内容到表格
          *
          * @param data
@@ -244,12 +253,7 @@ public class ExcelUtils {
             if (CollectionUtils.isEmpty(data)) {
                 return;
             }
-            if (!sheetContent.isHeaderInsert()) {
-                writeRow(Collections.singletonList(sheetContent.getHeaders()), sheetContent.getHeaderCellStyle(workbook));
-                sheetContent.setHeaderInsert(true);
-            }
             writeRow(data, sheetContent.getCellStyle());
-            autoSizeColumn(data.get(0).length);
         }
 
         private void checkSheet() {
@@ -264,33 +268,31 @@ public class ExcelUtils {
          * @param data
          */
         public void writeClassList(List<?> data) {
+            List<Object[]> rows = new ArrayList<>();
             if (CollectionUtils.isEmpty(data)) {
                 return;
             }
+            // 表头
             Class<?> aClass = data.get(0).getClass();
             if (aClass != filedContent.getClazz()) {
                 throw new IllegalArgumentException("ExcelUtils write Class Exception：The parameter class-" +
                         aClass + " is different from the header class-" + filedContent.getClazz());
             }
-            List<Object[]> ary = new ArrayList<>();
             final Map<String, FiledCache> filedCacheMap = filedContent.getFiledCacheMap();
             final List<String> filedOder = filedContent.getFiledOder();
             for (Object obj : data) {
-                Object[] o = new Object[filedOder.size()];
-                for (int i = 0; i < filedOder.size(); i++) {
-                    String s = filedOder.get(i);
-                    FiledCache filedCache = filedCacheMap.get(s);
-                    Field field = filedCache.getField();
-                    field.setAccessible(true);
-                    try {
-                        o[i] = field.get(obj);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
+                try {
+                    Object[] row = new Object[filedOder.size()];
+                    for (int i = 0; i < filedOder.size(); i++) {
+                        Field field = filedCacheMap.get(filedOder.get(i)).getField();
+                        field.setAccessible(true);
+                        row[i] = field.get(obj);
                     }
+                    rows.add(row);
+                } catch (IllegalAccessException ignored) {
                 }
-                ary.add(o);
             }
-            write(ary);
+            write(rows);
         }
 
         /**
